@@ -38,10 +38,10 @@ module Chownr
     
     def execute
       @cmd ||= @find_cmd
-      # result = `#{@cmd}`.split
-      stdout_str, stderr_str, status = Open3.capture3( @cmd ) 
-      fail Error.new(stderr_str) if stderr_str.size > 0
-      return stdout_str.split
+      pid, stdin, stdout, stderr = Open4::popen4(@cmd)
+      _, status = Process::waitpid2(pid)
+      fail Error.new(stderr) if status.exitstatus > 0
+      return stdout.readlines
     end
     
     def prepare_execute_with( text )

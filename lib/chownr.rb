@@ -1,7 +1,7 @@
 require 'optparse'
 require 'pathname'
 require 'ostruct'
-require 'open3'
+require 'open4'
 
 basedir = Pathname( File.dirname(__FILE__) )
 $:.unshift(basedir) unless $:.include?(basedir) || $:.include?(File.expand_path(basedir))

@@ -20,6 +20,7 @@ EOF
     # Examples:
     # [:runtime,     "rack",  "~> 1.1"],
     # [:development, "rspec", "~> 2.1"],
+    [:runtime, "open4", "~> 1.3"],
   ]
   
   s.files         = Dir['**/*']
