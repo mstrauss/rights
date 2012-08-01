@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/chownr')
+
+Chownr::CLI.new( STDOUT, STDERR ).execute(ARGV)
