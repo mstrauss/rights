@@ -14,4 +14,4 @@ def require_all( dir )
 end
 
 require_all 'ext'
-require_all 'chownr'
+require_all 'rights'

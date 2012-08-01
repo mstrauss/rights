@@ -1,4 +1,4 @@
-module Chownr
+module Rights
   
   # this class is the 'doer'
   class Doer

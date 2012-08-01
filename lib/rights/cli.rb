@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-module Chownr
+module Rights
   
   # this class provides the command-line interface
   class CLI
@@ -23,7 +23,7 @@ module Chownr
     def red(text); colorize(text, 31); end
     
     def banner
-      red( "CHOWNR VERSION #{Chownr::VERSION}. THIS PROGRAM COMES WITH NO WARRANTY WHATSOEVER. MAKE BACKUPS!") + $/ +
+      red( "RIGHTS VERSION #{Rights::VERSION}. THIS PROGRAM COMES WITH NO WARRANTY WHATSOEVER. MAKE BACKUPS!") + $/ +
       "Usage: #{Pathname($0).basename} <path> [options]"
     end
     
@@ -73,10 +73,10 @@ module Chownr
       path = arguments.first
       
       begin
-        status = Chownr::Doer.new( path, options ).execute
+        status = Rights::Doer.new( path, options ).execute
         @stdout.puts status.message if status.message
         exit status.code
-      rescue Chownr::Error => error
+      rescue Rights::Error => error
         @stderr.puts red error.user_info
         exit 2
       end

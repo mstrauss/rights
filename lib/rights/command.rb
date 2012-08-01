@@ -1,4 +1,4 @@
-module Chownr
+module Rights
   
   class Command
     

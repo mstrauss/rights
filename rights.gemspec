@@ -1,11 +1,11 @@
 
 # -*- encoding: utf-8 -*-
 $:.push('lib')
-require "chownr/version"
+require "rights/version"
 
 Gem::Specification.new do |s|
-  s.name     = "chownr"
-  s.version  = Chownr::VERSION.dup
+  s.name     = "rights"
+  s.version  = Rights::VERSION.dup
   s.date     = "2012-06-08"
   s.summary  = "TODO: Summary of project"
   s.email    = "todo@project.com"
