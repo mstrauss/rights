@@ -1,7 +1,7 @@
 module Rights
   
-  # this class is the 'doer'
-  class Doer
+  # this one represents a command-line command
+  class DoerCommand < Command
     
     ### need to use ruby for chmod because unix-command does not remove sticky bits numerically ###
     ###chmod = '/bin/chmod -c' <- does not work always
@@ -38,14 +38,14 @@ module Rights
       commands << ChangeGroupCommand.new( findCommand, @options[:group] ) if @options[:group]
       
       if @options[:dry] then
-        if commands.any? { |cmd| cmd.has_things_to_do? }
-          message = "There is work to be done."
+        messages = []
+        if commands.any? { |cmd| status = cmd.has_things_to_do?; messages << cmd.messages if status; status }
           code = 0
         else
-          message = "Nothing to do."
+          messages << "Nothing to do."
           code = 1
         end
-        return OpenStruct.new( :code => code, :message => message )
+        return OpenStruct.new( :code => code, :messages => messages )
       else
         commands.each { |cmd| cmd.execute }
         return OpenStruct.new( :code => 0 )
